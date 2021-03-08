@@ -1,0 +1,93 @@
+------------------------------------------------------------------->UNIX<---------------------------------------------------------------------------
+UNAME
+1. displays operating system
+2. -a gives full details
+
+HOSTAME
+1. gives details about server name
+2. -i gives IP address of local machine or network card
+
+WHO
+1. gives list of users connected to server
+2. whoami gives logged in username
+
+TTY
+1. gives terminal name			 
+
+UPTIME
+1. server up from last turn off.
+
+WHICH
+which pwd gives loaction of pwd command.
+
+TRANSLATE
+1. tr '[a-z]' '[A-Z]' filename --> translates file content to uppercase
+2. tr 'abcd' '[ABCD]' filename --> translates abcd characters to uppercase
+3. tr '' '\t' filename --> translates spaces with tabspaces
+
+SORT
+1. -r --> for reverse order.
+2. -u --> for unique lines			|sort -f +1 -2|
+3. -n --> for ascii value comparison.
+
+
+UNIQUE
+1. -u --> prints non duplicate lines
+2. -d --> prints lines which have duplicate copy
+3. -c --> prints count of duplicate lines
+
+GREP 
+1. Grep -l --> prints only filename containing pattern
+2. Grep -o --> prints only pattern
+3. grep '^[bkt]' --> pattern starting with b or k or t			|grep -l 'BEGIN'|
+4. grep '^[^bkt]' --> pattern not starting with b or k or t
+5. grep '\<[0-9][0-9][0-9]\>' --> gives pattern containing only 3 nos.
+6. grep 'tec*' --> searches for pattern starting with tec.
+7. grep 'tec[aeiou]' --> searches with pattern tec followed by a or e or i and so on.
+8. grep 'b..d' --> starting with b and ending with d
+9. grep 't$' --> ending with t.
+10. grep '^......$' --> pattern with six characters
+
+FGREP
+fgrep "unix
+>oracle
+>perl" filename --> multiple pattern search
+
+EGREP
+1. egrep "(unix|oracle|perl)" filename --> mixture of grep and fgrep.
+2. egrep /<[0-9]{4}/> --> searches for exact 4 digit no.
+3. {4-7} --> 4 digit or 5 or 6 or 7 digit no.
+4. {4,} --> min of 4 digit no.
+	
+DATE
+1. date '+%D' --> 03/08/2021
+2. '+%d' --> 08
+3. '+%A' --> Monday
+4. '+%B' --> March
+5. '+%Y' --> 2021
+6. '+%T' --> 19:25:26
+7. '+%H' --> 19
+
+------------------------------------------------------------------->ORACLE<---------------------------------------------------------------------------
+alter session set nls_date_format='DD:MM:YY HH24:MI:SS'
+		OR
+alter session set nls_date_format='DD:MM:YY'
+
+for deletomg duplicate records
+-->delete from seqtest where rowid not in (select max(rowid) from seqtest group by enroll_no);
+
+select first_name,last_name,salary,avg(salary)over(partition by job_id) from t1;
+
+select row_number()over(order by job_id) as rank,first_name,last_name,salary from t1;
+
+
+
+--> installing apache tomcat
+
+tar xvfz apache-tomcat-8.5.63.tar.gz
+cd /bin
+ls -ltr
+sh startup.sh
+give url--> localhost:8080
+
+
